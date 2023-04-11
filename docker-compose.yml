@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: myteamapi
+    build: ./docker/api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    networks:
+      - local-net
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 8G
+networks:
+  local-net:
+    driver: bridge
